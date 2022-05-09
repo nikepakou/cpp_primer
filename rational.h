@@ -1,5 +1,6 @@
 #ifndef RATIONAL_H
 #define RATIONAL_H
+#include <iostream>
 // 定义有理数
 class Rational {
 public:
@@ -10,8 +11,7 @@ public:
     }
     int numerator() const {return this->numerator_;}    // 分子和分母访问函数
     int denominator() const { return this->denominator_;}
-    const Rational operator* (const Rational& rhs) const; // 只支持有理数*整数
-
+    // const Rational operator* (const Rational& rhs) const; // 只支持有理数*整数
 private:
     int numerator_;
     int denominator_;
@@ -23,4 +23,8 @@ const Rational operator*(const Rational& lhs, const Rational& rhs) {
                     lhs.denominator() * rhs.denominator());
 }
 
+std::ostream& operator<< (std::ostream& os, const Rational& rhs) {
+    os << rhs.numerator() << " " << rhs.denominator() << std::endl;
+    return os;
+}
 #endif
